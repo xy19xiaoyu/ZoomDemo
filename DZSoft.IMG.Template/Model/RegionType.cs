@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DZSoft.IMG.Template.Model
 {
-    public enum DrawType
+    public enum RegionType
     {
         NONE = 0,
         Rectangl = 1,

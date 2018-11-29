@@ -12,7 +12,7 @@ namespace DZSoft.IMG.Template.Model
     /// 注意使用完后要调用dzFreePtr释放imgData
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-    public struct MyBitmap
+    public struct DzBitmap
     {
         [MarshalAs(UnmanagedType.I4)]
         public Int32 width;
@@ -42,6 +42,11 @@ namespace DZSoft.IMG.Template.Model
     /// </summary>
     public class UNINSPECT_REGION
     {
+        public UNINSPECT_REGION()
+        {
+            sUnInspectRegionProp = new UNINSPECT_REGION_PROP();
+            rgnUnInspectRegion = new MODEL_REGION();
+        }
         public UNINSPECT_REGION_PROP sUnInspectRegionProp { get; set; }
         public MODEL_REGION rgnUnInspectRegion { get; set; }
     }
@@ -89,9 +94,18 @@ namespace DZSoft.IMG.Template.Model
     }
     public class MEASURE_EDGE
     {
-        public byte byGray { get; set; }            //灰度阈值
-        public byte byOrientation { get; set; }    //0:从左上  1：从右下
-        public byte byChannel { get; set; }        //测量通道，自动获取并保存
+        /// <summary>
+        /// 灰度阈值
+        /// </summary>
+        public byte byGray { get; set; }
+        /// <summary>
+        /// 0:从左上  1：从右下
+        /// </summary>
+        public byte byOrientation { get; set; }
+        /// <summary>
+        /// 测量通道，自动获取并保存
+        /// </summary>
+        public byte byChannel { get; set; }
     }
 
     public class MEASURE_PROP
@@ -113,10 +127,10 @@ namespace DZSoft.IMG.Template.Model
     {
         public FRONT_REGION()
         {
-            byThredType = 3;
-            nDialtion = 0;
-            byThredLow = 0;
-            byThredHigh = 0;
+            byThredType = 1;
+            nDialtion = 1;
+            byThredLow = 1;
+            byThredHigh = 1;
         }
         /// <summary>
         /// 分割类型：,0：固定阈值 1：自动提取
@@ -140,6 +154,12 @@ namespace DZSoft.IMG.Template.Model
     /// </summary>
     public class CHECK_PROP
     {
+        public CHECK_PROP()
+        {
+            sFrontProp = new FRONT_REGION();
+            sMeasureProp = new MEASURE_PROP();
+
+        }
         public FRONT_REGION sFrontProp { get; set; }
 
         //边缘测量的属性
@@ -255,8 +275,29 @@ namespace DZSoft.IMG.Template.Model
         public CHECK_PARA()
         {
             bAllShape = false;
+
+            sSpotPara = new GENERAL_CHECK_PARA();
+
             bMircoAllShape = false;
+            sMircoAllPara = new GENERAL_CHECK_PARA();
+
+
             bStatisticPara = false;
+            sStatisticInfo = new STATIC_INFO();
+
+            bMeasureFrontArea = false;
+            sMeasureFrontAreaPara = new MEASURE_CHECK_PARA();
+
+            bMeasureFrontNum = false;
+            sMeasureFrontNumPara = new MEASURE_CHECK_PARA();
+
+            bOverPrint = false;
+            sOverprintPara = new OVERPRINT_CHECK_PARA();
+
+            bCheckColor = false;
+            sColorPara = new CHECKPARA_COLOR();
+
+            sMeasurePara = new MEASURE_CHECK_PARA();
         }
         /// <summary>
         /// 普通检测
@@ -468,7 +509,10 @@ namespace DZSoft.IMG.Template.Model
         /// 图像上所有的框选图形
         /// </summary>
         public MODEL_REGION sCellRegion { get; set; }
-        public int nInspectRegCount { get; set; }
+        public int nInspectRegCount
+        {
+            get { return vInspectRegion.Count; }
+        }
         public List<INSPECT_REGION> vInspectRegion { get; set; }
     }
 
@@ -476,7 +520,10 @@ namespace DZSoft.IMG.Template.Model
     {
         public TEMPLATE_INFO_PROP()
         {
-
+            nIndependentImgNo = 0;
+            nStudyNum = 0;
+            nChannel = 3;
+            rtCellMarks = new List<Rectangle>();
         }
         /// <summary>
         /// 拼接后的图像号
@@ -525,7 +572,14 @@ namespace DZSoft.IMG.Template.Model
         /// <summary>
         /// 第一小开在大图中的区域
         /// </summary>
-        public Rectangle rtFirstCell { get; set; }
+        public Rectangle rtFirstCell
+        {
+            get
+            {
+                if (rtCellMarks.Count == 0) return new Rectangle();
+                return rtCellMarks.First();
+            }
+        }
         /// <summary>
         /// 小开的行数
         /// </summary>
@@ -584,5 +638,54 @@ namespace DZSoft.IMG.Template.Model
         public List<MARK_REGION> vMainMarkRegion { get; set; }
 
     }
+    /// <summary>
+    /// 检测结果
+    /// </summary>
+    public class INSPECT_RESULT_INFO
+    {
+        /// <summary>
+        /// 小开号码
+        /// </summary>
+        public int nCellId { get; set; }
+        /// <summary>
+        /// 开对应的行号
+        /// </summary>
+        public byte byCellRow { get; set; }
+        /// <summary>
+        /// 开对应的列号
+        /// </summary>
+        public byte byCellCol { get; set; }
 
+        public int nRegionId { get; set; }
+        /// <summary>
+        /// 算法类型,功能：使用该变量返回错误所属于的检测区域类型
+        /// </summary>
+        public int nAlgType { get; set; }
+        public int nAlgTypeSecond { get; set; }
+        /// <summary>
+        /// 缺陷类别（配置文件指定）按位设置缺陷类型
+        /// </summary>
+        public byte byErrorType { get; set; }
+        /// <summary>
+        /// 缺陷面积或测量值
+        /// </summary>
+        public float fErrorValue { get; set; }
+
+        /// <summary>
+        /// 多模板ID//nModelIndex
+        /// </summary>
+        public int nMultiID { get; set; }
+        /// <summary>
+        /// 多模板图像的索引
+        /// </summary>
+        public int nModelIndex { get; set; }
+        /// <summary>
+        /// 区域相对于采集图像中的位置
+        /// </summary>
+        public Rectangle rcOrigin { get; set; }
+        /// <summary>
+        /// 区域相对于模板图像的区域
+        /// </summary>
+        public Rectangle rcModel { get; set; }
+    }
 }

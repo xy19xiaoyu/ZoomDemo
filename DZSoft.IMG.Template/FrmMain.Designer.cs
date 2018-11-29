@@ -28,18 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("定位");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("检测");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("测量");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("模板", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("定位");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("检测");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("测量");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("0", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("小开", new System.Windows.Forms.TreeNode[] {
+            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("模板", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode11});
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.Panel();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tpMark = new System.Windows.Forms.TabPage();
+            this.btnDelMark = new System.Windows.Forms.Button();
+            this.btnEditMark = new System.Windows.Forms.Button();
             this.btnAddMark = new System.Windows.Forms.Button();
             this.tlpMark = new System.Windows.Forms.TableLayoutPanel();
             this.numMarkSearchY = new System.Windows.Forms.NumericUpDown();
@@ -53,6 +59,8 @@
             this.rbMarkModel1 = new System.Windows.Forms.RadioButton();
             this.rbMarkModel0 = new System.Windows.Forms.RadioButton();
             this.tpCheck = new System.Windows.Forms.TabPage();
+            this.btnDelCheck = new System.Windows.Forms.Button();
+            this.btnEditCheck = new System.Windows.Forms.Button();
             this.btnAddCheck = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -124,6 +132,8 @@
             this.numStatNum = new System.Windows.Forms.NumericUpDown();
             this.numStatArea = new System.Windows.Forms.NumericUpDown();
             this.tpCL = new System.Windows.Forms.TabPage();
+            this.btnDelCL = new System.Windows.Forms.Button();
+            this.btnEditCL = new System.Windows.Forms.Button();
             this.btnAddCL = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label32 = new System.Windows.Forms.Label();
@@ -132,12 +142,14 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.cmbCL = new System.Windows.Forms.ComboBox();
-            this.numericUpDown24 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown23 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown22 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown25 = new System.Windows.Forms.NumericUpDown();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.numCL1 = new System.Windows.Forms.NumericUpDown();
+            this.numCL2 = new System.Windows.Forms.NumericUpDown();
+            this.numCL3 = new System.Windows.Forms.NumericUpDown();
+            this.numCL4 = new System.Windows.Forms.NumericUpDown();
+            this.tabUnCheck = new System.Windows.Forms.TabPage();
+            this.btnDelUnCheck = new System.Windows.Forms.Button();
+            this.btnEditUnCheck = new System.Windows.Forms.Button();
+            this.btnAddUnCheck = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -146,16 +158,21 @@
             this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.模板ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.检测RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bsmBatch = new System.Windows.Forms.ToolStripMenuItem();
             this.tvTemp = new System.Windows.Forms.TreeView();
             this.dzPanel1 = new DZSoft.IMG.Template.UserControls.DZPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbRectangle = new System.Windows.Forms.ToolStripButton();
-            this.tsbPolygon = new System.Windows.Forms.ToolStripButton();
-            this.tsbCircle = new System.Windows.Forms.ToolStripButton();
+            this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.tsbRectangle = new System.Windows.Forms.ToolStripButton();
+            this.tsbPolygon = new System.Windows.Forms.ToolStripButton();
+            this.tsbCircle = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.picContent = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -204,15 +221,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.numStatArea)).BeginInit();
             this.tpCL.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL4)).BeginInit();
+            this.tabUnCheck.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.dzPanel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tsMenu.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picContent)).BeginInit();
             this.SuspendLayout();
@@ -257,7 +274,7 @@
             this.tabMain.Controls.Add(this.tpMark);
             this.tabMain.Controls.Add(this.tpCheck);
             this.tabMain.Controls.Add(this.tpCL);
-            this.tabMain.Controls.Add(this.tabPage1);
+            this.tabMain.Controls.Add(this.tabUnCheck);
             this.tabMain.Location = new System.Drawing.Point(3, 3);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
@@ -266,6 +283,8 @@
             // 
             // tpMark
             // 
+            this.tpMark.Controls.Add(this.btnDelMark);
+            this.tpMark.Controls.Add(this.btnEditMark);
             this.tpMark.Controls.Add(this.btnAddMark);
             this.tpMark.Controls.Add(this.tlpMark);
             this.tpMark.Location = new System.Drawing.Point(4, 22);
@@ -277,9 +296,31 @@
             this.tpMark.UseVisualStyleBackColor = true;
             this.tpMark.Click += new System.EventHandler(this.tpMark_Click);
             // 
+            // btnDelMark
+            // 
+            this.btnDelMark.Location = new System.Drawing.Point(180, 121);
+            this.btnDelMark.Name = "btnDelMark";
+            this.btnDelMark.Size = new System.Drawing.Size(75, 23);
+            this.btnDelMark.TabIndex = 16;
+            this.btnDelMark.Text = "删除";
+            this.btnDelMark.UseVisualStyleBackColor = true;
+            this.btnDelMark.Visible = false;
+            this.btnDelMark.Click += new System.EventHandler(this.btnDelMark_Click);
+            // 
+            // btnEditMark
+            // 
+            this.btnEditMark.Location = new System.Drawing.Point(97, 121);
+            this.btnEditMark.Name = "btnEditMark";
+            this.btnEditMark.Size = new System.Drawing.Size(75, 23);
+            this.btnEditMark.TabIndex = 15;
+            this.btnEditMark.Text = "修改";
+            this.btnEditMark.UseVisualStyleBackColor = true;
+            this.btnEditMark.Visible = false;
+            this.btnEditMark.Click += new System.EventHandler(this.btnEditMark_Click);
+            // 
             // btnAddMark
             // 
-            this.btnAddMark.Location = new System.Drawing.Point(250, 121);
+            this.btnAddMark.Location = new System.Drawing.Point(16, 121);
             this.btnAddMark.Name = "btnAddMark";
             this.btnAddMark.Size = new System.Drawing.Size(75, 23);
             this.btnAddMark.TabIndex = 14;
@@ -292,7 +333,7 @@
             this.tlpMark.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMark.ColumnCount = 2;
             this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 262F));
+            this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
             this.tlpMark.Controls.Add(this.numMarkSearchY, 1, 3);
             this.tlpMark.Controls.Add(this.numMarkSearchX, 1, 2);
             this.tlpMark.Controls.Add(this.label13, 0, 0);
@@ -469,6 +510,8 @@
             // 
             // tpCheck
             // 
+            this.tpCheck.Controls.Add(this.btnDelCheck);
+            this.tpCheck.Controls.Add(this.btnEditCheck);
             this.tpCheck.Controls.Add(this.btnAddCheck);
             this.tpCheck.Controls.Add(this.groupBox3);
             this.tpCheck.Controls.Add(this.groupBox2);
@@ -481,9 +524,31 @@
             this.tpCheck.Text = " 检测";
             this.tpCheck.UseVisualStyleBackColor = true;
             // 
+            // btnDelCheck
+            // 
+            this.btnDelCheck.Location = new System.Drawing.Point(175, 498);
+            this.btnDelCheck.Name = "btnDelCheck";
+            this.btnDelCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnDelCheck.TabIndex = 26;
+            this.btnDelCheck.Text = "删除";
+            this.btnDelCheck.UseVisualStyleBackColor = true;
+            this.btnDelCheck.Visible = false;
+            this.btnDelCheck.Click += new System.EventHandler(this.btnDelCheck_Click);
+            // 
+            // btnEditCheck
+            // 
+            this.btnEditCheck.Location = new System.Drawing.Point(94, 498);
+            this.btnEditCheck.Name = "btnEditCheck";
+            this.btnEditCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnEditCheck.TabIndex = 25;
+            this.btnEditCheck.Text = "修改";
+            this.btnEditCheck.UseVisualStyleBackColor = true;
+            this.btnEditCheck.Visible = false;
+            this.btnEditCheck.Click += new System.EventHandler(this.btnEditCheck_Click);
+            // 
             // btnAddCheck
             // 
-            this.btnAddCheck.Location = new System.Drawing.Point(283, 498);
+            this.btnAddCheck.Location = new System.Drawing.Point(13, 498);
             this.btnAddCheck.Name = "btnAddCheck";
             this.btnAddCheck.Size = new System.Drawing.Size(75, 23);
             this.btnAddCheck.TabIndex = 24;
@@ -509,7 +574,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
             this.tableLayoutPanel5.Controls.Add(this.chkWT, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.numWTPZ, 2, 3);
             this.tableLayoutPanel5.Controls.Add(this.numWTHight, 2, 2);
@@ -736,7 +801,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 455F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.numBlack2, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.numBlack1, 2, 2);
@@ -929,7 +994,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 455F));
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.numGradeBlack2, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.numGradeBlack1, 2, 2);
@@ -1121,7 +1186,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 432F));
             this.tableLayoutPanel3.Controls.Add(this.label25, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.label26, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.numNum2, 2, 3);
@@ -1383,38 +1448,38 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
             this.tableLayoutPanel4.Controls.Add(this.chkColor, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label20, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.numColor1, 2, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(22, 6);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(297, 28);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
             // chkColor
             // 
             this.chkColor.AutoSize = true;
-            this.chkColor.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkColor.Location = new System.Drawing.Point(34, 4);
+            this.chkColor.Location = new System.Drawing.Point(4, 4);
             this.chkColor.Name = "chkColor";
-            this.chkColor.Size = new System.Drawing.Size(48, 21);
+            this.chkColor.Size = new System.Drawing.Size(48, 16);
             this.chkColor.TabIndex = 8;
             this.chkColor.Text = "开启";
             this.chkColor.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
-            this.label20.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label20.Location = new System.Drawing.Point(108, 2);
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Location = new System.Drawing.Point(87, 2);
             this.label20.Margin = new System.Windows.Forms.Padding(1);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(55, 25);
+            this.label20.Size = new System.Drawing.Size(76, 45);
             this.label20.TabIndex = 6;
             this.label20.Text = "偏大";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numColor1
             // 
@@ -1461,7 +1526,7 @@
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
             this.tableLayoutPanel8.Controls.Add(this.chkStat, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.label33, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.label34, 1, 1);
@@ -1593,6 +1658,8 @@
             // 
             // tpCL
             // 
+            this.tpCL.Controls.Add(this.btnDelCL);
+            this.tpCL.Controls.Add(this.btnEditCL);
             this.tpCL.Controls.Add(this.btnAddCL);
             this.tpCL.Controls.Add(this.tableLayoutPanel7);
             this.tpCL.Location = new System.Drawing.Point(4, 22);
@@ -1603,9 +1670,29 @@
             this.tpCL.Text = "测量";
             this.tpCL.UseVisualStyleBackColor = true;
             // 
+            // btnDelCL
+            // 
+            this.btnDelCL.Location = new System.Drawing.Point(182, 143);
+            this.btnDelCL.Name = "btnDelCL";
+            this.btnDelCL.Size = new System.Drawing.Size(75, 23);
+            this.btnDelCL.TabIndex = 27;
+            this.btnDelCL.Text = "删除";
+            this.btnDelCL.UseVisualStyleBackColor = true;
+            this.btnDelCL.Click += new System.EventHandler(this.btnDelCL_Click);
+            // 
+            // btnEditCL
+            // 
+            this.btnEditCL.Location = new System.Drawing.Point(101, 143);
+            this.btnEditCL.Name = "btnEditCL";
+            this.btnEditCL.Size = new System.Drawing.Size(75, 23);
+            this.btnEditCL.TabIndex = 26;
+            this.btnEditCL.Text = "修改";
+            this.btnEditCL.UseVisualStyleBackColor = true;
+            this.btnEditCL.Click += new System.EventHandler(this.btnEditCL_Click);
+            // 
             // btnAddCL
             // 
-            this.btnAddCL.Location = new System.Drawing.Point(230, 143);
+            this.btnAddCL.Location = new System.Drawing.Point(20, 143);
             this.btnAddCL.Name = "btnAddCL";
             this.btnAddCL.Size = new System.Drawing.Size(75, 23);
             this.btnAddCL.TabIndex = 25;
@@ -1618,17 +1705,17 @@
             this.tableLayoutPanel7.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
             this.tableLayoutPanel7.Controls.Add(this.label32, 0, 4);
             this.tableLayoutPanel7.Controls.Add(this.label28, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label29, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label30, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.label31, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.cmbCL, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown24, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown23, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown22, 1, 3);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown25, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.numCL1, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.numCL2, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.numCL3, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.numCL4, 1, 4);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(16, 6);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 5;
@@ -1751,93 +1838,118 @@
             this.cmbCL.Size = new System.Drawing.Size(121, 20);
             this.cmbCL.TabIndex = 11;
             // 
-            // numericUpDown24
+            // numCL1
             // 
-            this.numericUpDown24.Location = new System.Drawing.Point(128, 30);
-            this.numericUpDown24.Minimum = new decimal(new int[] {
+            this.numCL1.Location = new System.Drawing.Point(128, 30);
+            this.numCL1.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown24.Name = "numericUpDown24";
-            this.numericUpDown24.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown24.TabIndex = 8;
-            this.numericUpDown24.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown23
-            // 
-            this.numericUpDown23.Location = new System.Drawing.Point(128, 56);
-            this.numericUpDown23.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown23.Name = "numericUpDown23";
-            this.numericUpDown23.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown23.TabIndex = 9;
-            this.numericUpDown23.Value = new decimal(new int[] {
+            this.numCL1.Name = "numCL1";
+            this.numCL1.Size = new System.Drawing.Size(120, 21);
+            this.numCL1.TabIndex = 8;
+            this.numCL1.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown22
+            // numCL2
             // 
-            this.numericUpDown22.Location = new System.Drawing.Point(128, 82);
-            this.numericUpDown22.Minimum = new decimal(new int[] {
+            this.numCL2.Location = new System.Drawing.Point(128, 56);
+            this.numCL2.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown22.Name = "numericUpDown22";
-            this.numericUpDown22.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown22.TabIndex = 9;
-            this.numericUpDown22.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown25
-            // 
-            this.numericUpDown25.Location = new System.Drawing.Point(128, 108);
-            this.numericUpDown25.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown25.Name = "numericUpDown25";
-            this.numericUpDown25.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown25.TabIndex = 13;
-            this.numericUpDown25.Value = new decimal(new int[] {
+            this.numCL2.Name = "numCL2";
+            this.numCL2.Size = new System.Drawing.Size(120, 21);
+            this.numCL2.TabIndex = 9;
+            this.numCL2.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // tabPage1
+            // numCL3
             // 
-            this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(364, 594);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "不检测";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.numCL3.Location = new System.Drawing.Point(128, 82);
+            this.numCL3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCL3.Name = "numCL3";
+            this.numCL3.Size = new System.Drawing.Size(120, 21);
+            this.numCL3.TabIndex = 9;
+            this.numCL3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // button6
+            // numCL4
             // 
-            this.button6.Location = new System.Drawing.Point(25, 18);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "添加";
-            this.button6.UseVisualStyleBackColor = true;
+            this.numCL4.Location = new System.Drawing.Point(128, 108);
+            this.numCL4.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCL4.Name = "numCL4";
+            this.numCL4.Size = new System.Drawing.Size(120, 21);
+            this.numCL4.TabIndex = 13;
+            this.numCL4.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // tabUnCheck
+            // 
+            this.tabUnCheck.Controls.Add(this.btnDelUnCheck);
+            this.tabUnCheck.Controls.Add(this.btnEditUnCheck);
+            this.tabUnCheck.Controls.Add(this.btnAddUnCheck);
+            this.tabUnCheck.Location = new System.Drawing.Point(4, 22);
+            this.tabUnCheck.Name = "tabUnCheck";
+            this.tabUnCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUnCheck.Size = new System.Drawing.Size(364, 594);
+            this.tabUnCheck.TabIndex = 3;
+            this.tabUnCheck.Text = "不检测";
+            this.tabUnCheck.UseVisualStyleBackColor = true;
+            // 
+            // btnDelUnCheck
+            // 
+            this.btnDelUnCheck.Location = new System.Drawing.Point(190, 20);
+            this.btnDelUnCheck.Name = "btnDelUnCheck";
+            this.btnDelUnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnDelUnCheck.TabIndex = 29;
+            this.btnDelUnCheck.Text = "删除";
+            this.btnDelUnCheck.UseVisualStyleBackColor = true;
+            this.btnDelUnCheck.Visible = false;
+            this.btnDelUnCheck.Click += new System.EventHandler(this.btnDelUnCheck_Click);
+            // 
+            // btnEditUnCheck
+            // 
+            this.btnEditUnCheck.Location = new System.Drawing.Point(109, 20);
+            this.btnEditUnCheck.Name = "btnEditUnCheck";
+            this.btnEditUnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnEditUnCheck.TabIndex = 28;
+            this.btnEditUnCheck.Text = "修改";
+            this.btnEditUnCheck.UseVisualStyleBackColor = true;
+            this.btnEditUnCheck.Visible = false;
+            this.btnEditUnCheck.Click += new System.EventHandler(this.btnEditUnCheck_Click);
+            // 
+            // btnAddUnCheck
+            // 
+            this.btnAddUnCheck.Location = new System.Drawing.Point(28, 20);
+            this.btnAddUnCheck.Name = "btnAddUnCheck";
+            this.btnAddUnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnAddUnCheck.TabIndex = 27;
+            this.btnAddUnCheck.Text = "添加";
+            this.btnAddUnCheck.UseVisualStyleBackColor = true;
+            this.btnAddUnCheck.Click += new System.EventHandler(this.btnAddUnCheck_Click);
             // 
             // panel2
             // 
@@ -1874,7 +1986,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.模板ToolStripMenuItem});
+            this.模板ToolStripMenuItem,
+            this.检测RToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1270, 25);
@@ -1907,34 +2020,54 @@
             // 模板ToolStripMenuItem
             // 
             this.模板ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建ToolStripMenuItem});
+            this.打开ToolStripMenuItem});
             this.模板ToolStripMenuItem.Name = "模板ToolStripMenuItem";
             this.模板ToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.模板ToolStripMenuItem.Text = "模板(&T)";
             // 
-            // 新建ToolStripMenuItem
+            // 打开ToolStripMenuItem
             // 
-            this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.新建ToolStripMenuItem.Text = "新建(&N)";
-            this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
+            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.打开ToolStripMenuItem.Text = "打开(&O)";
+            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
+            // 
+            // 检测RToolStripMenuItem
+            // 
+            this.检测RToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bsmBatch});
+            this.检测RToolStripMenuItem.Name = "检测RToolStripMenuItem";
+            this.检测RToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
+            this.检测RToolStripMenuItem.Text = "检测(&R)";
+            // 
+            // bsmBatch
+            // 
+            this.bsmBatch.Name = "bsmBatch";
+            this.bsmBatch.Size = new System.Drawing.Size(140, 22);
+            this.bsmBatch.Text = "批量检测(&B)";
+            this.bsmBatch.Click += new System.EventHandler(this.bsmBatch_Click);
             // 
             // tvTemp
             // 
             this.tvTemp.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tvTemp.HideSelection = false;
             this.tvTemp.Location = new System.Drawing.Point(0, 25);
             this.tvTemp.Name = "tvTemp";
-            treeNode1.Name = "NodeMarks";
-            treeNode1.Text = "定位";
-            treeNode2.Name = "NodeRange";
-            treeNode2.Text = "检测";
-            treeNode3.Name = "节点0";
-            treeNode3.Text = "测量";
-            treeNode4.Name = "节点0";
-            treeNode4.Text = "模板";
+            treeNode7.Name = "NodeMarks";
+            treeNode7.Text = "定位";
+            treeNode8.Name = "NodeRange";
+            treeNode8.Text = "检测";
+            treeNode9.Name = "节点0";
+            treeNode9.Text = "测量";
+            treeNode10.Name = "cell0";
+            treeNode10.Text = "0";
+            treeNode11.Name = "节点0";
+            treeNode11.Text = "小开";
+            treeNode12.Name = "节点0";
+            treeNode12.Text = "模板";
             this.tvTemp.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            this.tvTemp.Size = new System.Drawing.Size(148, 737);
+            treeNode12});
+            this.tvTemp.Size = new System.Drawing.Size(202, 737);
             this.tvTemp.TabIndex = 31;
             this.tvTemp.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvTemp_AfterSelect);
             // 
@@ -1943,25 +2076,61 @@
             this.dzPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dzPanel1.Controls.Add(this.toolStrip1);
+            this.dzPanel1.Controls.Add(this.tsMenu);
             this.dzPanel1.Controls.Add(this.groupBox4);
             this.dzPanel1.Controls.Add(this.picContent);
-            this.dzPanel1.Location = new System.Drawing.Point(154, 25);
+            this.dzPanel1.Location = new System.Drawing.Point(208, 25);
             this.dzPanel1.Name = "dzPanel1";
-            this.dzPanel1.Size = new System.Drawing.Size(732, 737);
+            this.dzPanel1.Size = new System.Drawing.Size(678, 737);
             this.dzPanel1.TabIndex = 2;
             // 
-            // toolStrip1
+            // tsMenu
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenu.Enabled = false;
+            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbRectangle,
             this.tsbPolygon,
-            this.tsbCircle});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(732, 25);
-            this.toolStrip1.TabIndex = 30;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tsbCircle,
+            this.toolStripButton1,
+            this.tsbZoomIn,
+            this.toolStripButton2});
+            this.tsMenu.Location = new System.Drawing.Point(0, 0);
+            this.tsMenu.Name = "tsMenu";
+            this.tsMenu.Size = new System.Drawing.Size(678, 25);
+            this.tsMenu.TabIndex = 30;
+            this.tsMenu.Text = "toolStrip1";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.Location = new System.Drawing.Point(0, 637);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(678, 100);
+            this.groupBox4.TabIndex = 29;
+            this.groupBox4.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(6, 20);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(558, 68);
+            this.textBox1.TabIndex = 28;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1.Location = new System.Drawing.Point(574, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 63);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "检测";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // tsbRectangle
             // 
@@ -1991,46 +2160,38 @@
             this.tsbCircle.ToolTipText = "圆形";
             this.tsbCircle.Click += new System.EventHandler(this.tsbCircle_Click);
             // 
-            // groupBox4
+            // toolStripButton1
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(0, 637);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(732, 100);
-            this.groupBox4.TabIndex = 29;
-            this.groupBox4.TabStop = false;
+            this.toolStripButton1.Image = global::DZSoft.IMG.Template.Properties.Resources.move;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton1.Text = "移动";
             // 
-            // textBox1
+            // tsbZoomIn
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 20);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(612, 68);
-            this.textBox1.TabIndex = 28;
+            this.tsbZoomIn.Image = global::DZSoft.IMG.Template.Properties.Resources.zoomin;
+            this.tsbZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbZoomIn.Name = "tsbZoomIn";
+            this.tsbZoomIn.Size = new System.Drawing.Size(52, 22);
+            this.tsbZoomIn.Text = "放大";
             // 
-            // button1
+            // toolStripButton2
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(628, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 63);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "检测";
-            this.button1.UseVisualStyleBackColor = true;
+            this.toolStripButton2.Image = global::DZSoft.IMG.Template.Properties.Resources.zoomout;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton2.Text = "缩小";
             // 
             // picContent
             // 
             this.picContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.picContent.Location = new System.Drawing.Point(6, 28);
+            this.picContent.Location = new System.Drawing.Point(6, 36);
             this.picContent.Name = "picContent";
-            this.picContent.Size = new System.Drawing.Size(726, 603);
+            this.picContent.Size = new System.Drawing.Size(658, 598);
             this.picContent.TabIndex = 0;
             this.picContent.TabStop = false;
             this.picContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseDown);
@@ -2048,6 +2209,7 @@
             this.Controls.Add(this.dzPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2055,7 +2217,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmMain_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FrmMain_PreviewKeyDown);
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -2115,18 +2277,18 @@
             this.tpCL.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).EndInit();
-            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCL1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCL4)).EndInit();
+            this.tabUnCheck.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.dzPanel1.ResumeLayout(false);
             this.dzPanel1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsMenu.ResumeLayout(false);
+            this.tsMenu.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picContent)).EndInit();
@@ -2210,7 +2372,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripButton tsbRectangle;
         private System.Windows.Forms.ToolStripButton tsbPolygon;
         private System.Windows.Forms.ToolStripButton tsbCircle;
@@ -2225,10 +2387,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.NumericUpDown numericUpDown22;
-        private System.Windows.Forms.NumericUpDown numericUpDown23;
+        private System.Windows.Forms.NumericUpDown numCL3;
+        private System.Windows.Forms.NumericUpDown numCL2;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.NumericUpDown numericUpDown24;
+        private System.Windows.Forms.NumericUpDown numCL1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
@@ -2241,7 +2403,7 @@
         private System.Windows.Forms.RadioButton rbMarkModel1;
         private System.Windows.Forms.RadioButton rbMarkModel0;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.NumericUpDown numericUpDown25;
+        private System.Windows.Forms.NumericUpDown numCL4;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
@@ -2253,11 +2415,24 @@
         private System.Windows.Forms.Button btnAddMark;
         private System.Windows.Forms.TreeView tvTemp;
         private System.Windows.Forms.ToolStripMenuItem 模板ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
         private System.Windows.Forms.Button btnAddCheck;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabPage tabUnCheck;
+        private System.Windows.Forms.Button btnAddUnCheck;
         private System.Windows.Forms.Button btnAddCL;
+        private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
+        private System.Windows.Forms.Button btnEditMark;
+        private System.Windows.Forms.Button btnDelMark;
+        private System.Windows.Forms.Button btnDelCheck;
+        private System.Windows.Forms.Button btnEditCheck;
+        private System.Windows.Forms.Button btnDelCL;
+        private System.Windows.Forms.Button btnEditCL;
+        private System.Windows.Forms.Button btnDelUnCheck;
+        private System.Windows.Forms.Button btnEditUnCheck;
+        private System.Windows.Forms.ToolStripMenuItem 检测RToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bsmBatch;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tsbZoomIn;
     }
 }
 

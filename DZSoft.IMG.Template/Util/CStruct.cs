@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DZSoft.IMG.Template.Util
 {
-    public class CStructUtil
+    public class StructUtil
     {
         #region 内部方法
         /// <summary>
@@ -19,7 +19,7 @@ namespace DZSoft.IMG.Template.Util
         /// <param name="ptr">图像指针资源</param>
         public static void dzFreePtr(IntPtr ptr)
         {
-            MyBitmap mybmp = (MyBitmap)Marshal.PtrToStructure(ptr, typeof(MyBitmap));
+            DzBitmap mybmp = (DzBitmap)Marshal.PtrToStructure(ptr, typeof(DzBitmap));
             Marshal.FreeHGlobal(mybmp.imgData);
             Marshal.FreeHGlobal(ptr);
         }
@@ -54,7 +54,7 @@ namespace DZSoft.IMG.Template.Util
             // 将源图像内存区域锁定  
             Rectangle rect = new Rectangle(0, 0, original.Width, original.Height);
             BitmapData bmpData = original.LockBits(rect, ImageLockMode.ReadOnly, original.PixelFormat);
-            MyBitmap bmp = new MyBitmap();
+            DzBitmap bmp = new DzBitmap();
             bmp.width = bmpData.Width;
             bmp.height = bmpData.Height;
 
@@ -93,7 +93,7 @@ namespace DZSoft.IMG.Template.Util
         /// </summary>
         /// <param name="mybmp">MyBitmap</param>
         /// <returns>Bitmap</returns>
-        public static Bitmap GetBitmapByMyBitmap(MyBitmap mybmp)
+        public static Bitmap GetBitmapByMyBitmap(DzBitmap mybmp)
         {
             PixelFormat format = PixelFormat.Format8bppIndexed;
             if (mybmp.type == 1)

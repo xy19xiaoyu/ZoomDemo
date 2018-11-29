@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DZSoft.IMG.Template.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace DZSoft.IMG.Template
         [STAThread]
         static void Main()
         {
+
+            VisionChecker visionChecker = new VisionChecker(1024, 768);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());

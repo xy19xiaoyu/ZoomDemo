@@ -73,6 +73,16 @@ namespace DZSoft.IMG.Template.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap move {
+            get {
+                object obj = ResourceManager.GetObject("move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap polygon {
             get {
                 object obj = ResourceManager.GetObject("polygon", resourceCulture);
@@ -86,6 +96,26 @@ namespace DZSoft.IMG.Template.Properties {
         internal static System.Drawing.Bitmap Rectangle {
             get {
                 object obj = ResourceManager.GetObject("Rectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap zoomin {
+            get {
+                object obj = ResourceManager.GetObject("zoomin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap zoomout {
+            get {
+                object obj = ResourceManager.GetObject("zoomout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

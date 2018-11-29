@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,6 +58,9 @@ namespace DZSoft.IMG.Template
                 FileName = ofd.FileName;
                 BaseMap = (Bitmap)DZSOFT.Common.ImageUtil.ReadImage(FileName);
                 this.picContent.Image = BaseMap;
+                this.picContent.Width = BaseMap.Width;
+                this.picContent.Height = BaseMap.Height;
+                this.picContent.Location = new Point(0, 0);
                 this.tsMenu.Enabled = true;
             }
         }
@@ -90,51 +94,75 @@ namespace DZSoft.IMG.Template
         private void picContent_MouseDown(object sender, MouseEventArgs e)
         {
             if (BaseMap == null) return;
-            if (RegionType == RegionType.NONE) return;
-
-            if (e.Button == MouseButtons.Left)
+            var location = TransPoint(e.Location);
+            if (this.Cursor == Cursors.SizeAll && e.Button == MouseButtons.Left)
             {
-                if (RegionType == RegionType.Rolygon && IsStart)
-                {
-                    Points.Add(e.Location);
-                }
-                else
-                {
-                    StartPoint = e.Location;
-
-                }
+                IsMove = true;
+                MouseDownPoint = Cursor.Position;
+                picContent.Focus();
             }
-            else if (e.Button == MouseButtons.Right && RegionType == RegionType.Rolygon)
+            else
             {
-                if (Points.Count >= 3)
+                if (RegionType == RegionType.NONE) return;
+
+                if (e.Button == MouseButtons.Left)
                 {
-                    IsStart = false;
-                    Points.Add(Points.First());
-                    EndPoint = new Point();
-                    DrawShape();
-                    //RegionType = RegionType.NONE;
+                    if (RegionType == RegionType.Rolygon && IsStart)
+                    {
+                        Points.Add(location);
+                    }
+                    else
+                    {
+                        StartPoint = location;
+
+                    }
+                }
+                else if (e.Button == MouseButtons.Right && RegionType == RegionType.Rolygon)
+                {
+                    if (Points.Count >= 3)
+                    {
+                        IsStart = false;
+                        Points.Add(Points.First());
+                        EndPoint = new Point();
+                        DrawShape();
+                        //RegionType = RegionType.NONE;
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+                else if (e.Button == MouseButtons.Right && (RegionType == RegionType.Rectangl || RegionType == RegionType.Circle))
+                {
                     this.Cursor = Cursors.Default;
                 }
             }
-            else if (e.Button == MouseButtons.Right && (RegionType == RegionType.Rectangl || RegionType == RegionType.Circle))
-            {
-                this.Cursor = Cursors.Default;
-            }
+
         }
 
         private void picContent_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!IsStart) return;
-            if (e.Button == MouseButtons.Left)
+            picContent.Focus();
+            if (IsMove)
             {
-                EndPoint = e.Location;
-                DrawShape();
+                int x, y;
+                int moveX, moveY;
+                moveX = Cursor.Position.X - MouseDownPoint.X;
+                moveY = Cursor.Position.Y - MouseDownPoint.Y;
+                x = picContent.Location.X + moveX;
+                y = picContent.Location.Y + moveY;
+                picContent.Location = new Point(x, y);
+                MouseDownPoint.X = Cursor.Position.X;
+                MouseDownPoint.Y = Cursor.Position.Y;
             }
-            if (RegionType == RegionType.Rolygon)
+            else
             {
-                EndPoint = e.Location;
-                DrawShape();
+                var location = TransPoint(e.Location);
+                if (!IsStart) return;
+                if (e.Button == MouseButtons.Left || RegionType == RegionType.Rolygon)
+                {
+                    EndPoint = location;
+                    DrawShape();
+                }
             }
+
         }
 
         private void DrawShape()
@@ -206,14 +234,20 @@ namespace DZSoft.IMG.Template
 
         private void picContent_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!IsStart) return;
-            if (e.Button == MouseButtons.Left)
+            if (IsMove)
             {
-                EndPoint = e.Location;
-                DrawShape();
-
-
+                IsMove = false;
             }
+            else
+            {
+                if (!IsStart) return;
+                if (e.Button == MouseButtons.Left)
+                {
+                    EndPoint = TransPoint(e.Location);
+                    DrawShape();
+                }
+            }
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -295,9 +329,72 @@ namespace DZSoft.IMG.Template
             tpMark.Parent = tabMain;
             tpCheck.Parent = null;
             tpCL.Parent = null;
+            this.picContent.MouseWheel += PicContent_MouseWheel;
+            this.picContent.Focus();
         }
 
+        private void PicContent_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (BaseMap == null) return;
+            if (e.Delta > 0)
+            {
+                Zoom(e.Location, true);
+            }
+            else
+            {
+                Zoom(e.Location, false);
+            }
 
+        }
+
+        public void Zoom(Point point, bool isZoomIn)
+        {
+            int x = point.X;
+            int y = point.Y;
+            int ow = picContent.Width;
+            int oh = picContent.Height;
+            int VX, VY;
+            if (isZoomIn)
+            {
+                picContent.Width += ZoomStep;
+                picContent.Height += ZoomStep;
+                PropertyInfo pInfo = picContent.GetType().GetProperty("ImageRectangle", BindingFlags.Instance |
+                 BindingFlags.NonPublic);
+                Rectangle rect = (Rectangle)pInfo.GetValue(picContent, null);
+                picContent.Width = rect.Width;
+                picContent.Height = rect.Height;
+            }
+            else
+            {
+                if (picContent.Width < BaseMap.Width / 10)
+                    return;
+                picContent.Width -= ZoomStep;
+                picContent.Height -= ZoomStep;
+                PropertyInfo pInfo = picContent.GetType().GetProperty("ImageRectangle", BindingFlags.Instance |
+                 BindingFlags.NonPublic);
+                Rectangle rect = (Rectangle)pInfo.GetValue(picContent, null);
+                picContent.Width = rect.Width;
+                picContent.Height = rect.Height;
+            }
+            VX = (int)((double)x * (ow - picContent.Width) / ow);
+            VY = (int)((double)y * (oh - picContent.Height) / oh);
+            picContent.Location = new Point(picContent.Location.X + VX, picContent.Location.Y + VY);
+            if (picContent.Width > BaseMap.Width)
+            {
+                this.Cursor = Cursors.SizeAll;
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+        }
+        public void ReSetPictureSize()
+        {
+            if (BaseMap == null) return;
+            picContent.Location = new Point(0, 0);
+            picContent.Size = BaseMap.Size;
+        }
 
         private void tpMark_Click(object sender, EventArgs e)
         {
@@ -1119,6 +1216,92 @@ namespace DZSoft.IMG.Template
             FrmBatchRuncs frm = new FrmBatchRuncs();
             frm.ShowDialog();
 
+        }
+
+        #region 移动
+        private bool IsMove { get; set; }
+        private Point MouseDownPoint = new Point(); //记录拖拽过程鼠标位置
+        private int ZoomStep { get; set; } = 60;   //缩放步长
+        #endregion
+        private void tsbMove_Click(object sender, EventArgs e)
+        {
+            if (this.Cursor == Cursors.SizeAll)
+            {
+                this.Cursor = Cursors.Default;
+            }
+            else
+            {
+                this.Cursor = Cursors.SizeAll;
+            }
+
+        }
+
+        private void pnlContent_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.Cursor == Cursors.SizeAll && e.Button == MouseButtons.Left)
+            {
+                IsMove = true;
+                MouseDownPoint = Cursor.Position;
+                picContent.Focus();
+            }
+        }
+
+        private void pnlContent_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMove)
+            {
+                int x, y;
+                int moveX, moveY;
+                moveX = Cursor.Position.X - MouseDownPoint.X;
+                moveY = Cursor.Position.Y - MouseDownPoint.Y;
+                x = picContent.Location.X + moveX;
+                y = picContent.Location.Y + moveY;
+                picContent.Location = new Point(x, y);
+                MouseDownPoint.X = Cursor.Position.X;
+                MouseDownPoint.Y = Cursor.Position.Y;
+            }
+        }
+
+        private void pnlContent_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (IsMove)
+            {
+                IsMove = false;
+            }
+        }
+
+        private void tsbZoomIn_Click(object sender, EventArgs e)
+        {
+            Zoom(new Point(0, 0), true);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Zoom(new Point(0, 0), false);
+        }
+
+        private void tsbReset_Click(object sender, EventArgs e)
+        {
+            ReSetPictureSize();
+        }
+
+        private Point TransPoint(Point point)
+        {
+            if (BaseMap == null) return point;
+            var wv = (double)picContent.Width / BaseMap.Width;
+            var hv = (double)picContent.Height / BaseMap.Height;
+
+            Point newPoint = new Point();
+            newPoint.X = (int)(point.X / wv);
+            newPoint.Y = (int)(point.Y / hv);
+
+            return newPoint;
+        }
+
+        private void tsbFull_Click(object sender, EventArgs e)
+        {
+            this.picContent.Width = pnlContent.Width;
+            this.picContent.Height = pnlContent.Height;
         }
     }
 }

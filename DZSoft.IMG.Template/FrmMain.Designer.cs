@@ -163,17 +163,20 @@
             this.bsmBatch = new System.Windows.Forms.ToolStripMenuItem();
             this.tvTemp = new System.Windows.Forms.TreeView();
             this.dzPanel1 = new DZSoft.IMG.Template.UserControls.DZPanel();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.picContent = new System.Windows.Forms.PictureBox();
             this.tsbRectangle = new System.Windows.Forms.ToolStripButton();
             this.tsbPolygon = new System.Windows.Forms.ToolStripButton();
             this.tsbCircle = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbMove = new System.Windows.Forms.ToolStripButton();
             this.tsbZoomIn = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.picContent = new System.Windows.Forms.PictureBox();
+            this.tsbReset = new System.Windows.Forms.ToolStripButton();
+            this.tsbFull = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -229,6 +232,7 @@
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.dzPanel1.SuspendLayout();
+            this.pnlContent.SuspendLayout();
             this.tsMenu.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picContent)).BeginInit();
@@ -333,7 +337,7 @@
             this.tlpMark.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tlpMark.ColumnCount = 2;
             this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 319F));
+            this.tlpMark.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.tlpMark.Controls.Add(this.numMarkSearchY, 1, 3);
             this.tlpMark.Controls.Add(this.numMarkSearchX, 1, 2);
             this.tlpMark.Controls.Add(this.label13, 0, 0);
@@ -574,7 +578,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
             this.tableLayoutPanel5.Controls.Add(this.chkWT, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.numWTPZ, 2, 3);
             this.tableLayoutPanel5.Controls.Add(this.numWTHight, 2, 2);
@@ -801,7 +805,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 455F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 481F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.numBlack2, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.numBlack1, 2, 2);
@@ -994,7 +998,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 455F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 481F));
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.numGradeBlack2, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.numGradeBlack1, 2, 2);
@@ -1186,7 +1190,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 432F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 458F));
             this.tableLayoutPanel3.Controls.Add(this.label25, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.label26, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.numNum2, 2, 3);
@@ -1448,14 +1452,14 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
             this.tableLayoutPanel4.Controls.Add(this.chkColor, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label20, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.numColor1, 2, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(22, 6);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(297, 28);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
@@ -1476,7 +1480,7 @@
             this.label20.Location = new System.Drawing.Point(87, 2);
             this.label20.Margin = new System.Windows.Forms.Padding(1);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 45);
+            this.label20.Size = new System.Drawing.Size(76, 71);
             this.label20.TabIndex = 6;
             this.label20.Text = "偏大";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1526,7 +1530,7 @@
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 428F));
             this.tableLayoutPanel8.Controls.Add(this.chkStat, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.label33, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.label34, 1, 1);
@@ -1705,7 +1709,7 @@
             this.tableLayoutPanel7.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 295F));
             this.tableLayoutPanel7.Controls.Add(this.label32, 0, 4);
             this.tableLayoutPanel7.Controls.Add(this.label28, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label29, 0, 1);
@@ -2076,13 +2080,25 @@
             this.dzPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dzPanel1.Controls.Add(this.pnlContent);
             this.dzPanel1.Controls.Add(this.tsMenu);
             this.dzPanel1.Controls.Add(this.groupBox4);
-            this.dzPanel1.Controls.Add(this.picContent);
             this.dzPanel1.Location = new System.Drawing.Point(208, 25);
             this.dzPanel1.Name = "dzPanel1";
             this.dzPanel1.Size = new System.Drawing.Size(678, 737);
             this.dzPanel1.TabIndex = 2;
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.picContent);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 25);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(678, 612);
+            this.pnlContent.TabIndex = 31;
+            this.pnlContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlContent_MouseDown);
+            this.pnlContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlContent_MouseMove);
+            this.pnlContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlContent_MouseUp);
             // 
             // tsMenu
             // 
@@ -2091,9 +2107,11 @@
             this.tsbRectangle,
             this.tsbPolygon,
             this.tsbCircle,
-            this.toolStripButton1,
+            this.tsbMove,
             this.tsbZoomIn,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.tsbReset,
+            this.tsbFull});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Size = new System.Drawing.Size(678, 25);
@@ -2132,6 +2150,19 @@
             this.button1.Text = "检测";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // picContent
+            // 
+            this.picContent.Location = new System.Drawing.Point(46, 44);
+            this.picContent.Name = "picContent";
+            this.picContent.Size = new System.Drawing.Size(580, 483);
+            this.picContent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picContent.TabIndex = 0;
+            this.picContent.TabStop = false;
+            this.picContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseDown);
+            this.picContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseMove);
+            this.picContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseUp);
+            this.picContent.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.picContent_PreviewKeyDown);
+            // 
             // tsbRectangle
             // 
             this.tsbRectangle.Image = global::DZSoft.IMG.Template.Properties.Resources.Rectangle;
@@ -2160,13 +2191,14 @@
             this.tsbCircle.ToolTipText = "圆形";
             this.tsbCircle.Click += new System.EventHandler(this.tsbCircle_Click);
             // 
-            // toolStripButton1
+            // tsbMove
             // 
-            this.toolStripButton1.Image = global::DZSoft.IMG.Template.Properties.Resources.move;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton1.Text = "移动";
+            this.tsbMove.Image = global::DZSoft.IMG.Template.Properties.Resources.move;
+            this.tsbMove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMove.Name = "tsbMove";
+            this.tsbMove.Size = new System.Drawing.Size(52, 22);
+            this.tsbMove.Text = "移动";
+            this.tsbMove.Click += new System.EventHandler(this.tsbMove_Click);
             // 
             // tsbZoomIn
             // 
@@ -2175,6 +2207,7 @@
             this.tsbZoomIn.Name = "tsbZoomIn";
             this.tsbZoomIn.Size = new System.Drawing.Size(52, 22);
             this.tsbZoomIn.Text = "放大";
+            this.tsbZoomIn.Click += new System.EventHandler(this.tsbZoomIn_Click);
             // 
             // toolStripButton2
             // 
@@ -2183,21 +2216,25 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(52, 22);
             this.toolStripButton2.Text = "缩小";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // picContent
+            // tsbReset
             // 
-            this.picContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picContent.Location = new System.Drawing.Point(6, 36);
-            this.picContent.Name = "picContent";
-            this.picContent.Size = new System.Drawing.Size(658, 598);
-            this.picContent.TabIndex = 0;
-            this.picContent.TabStop = false;
-            this.picContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseDown);
-            this.picContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseMove);
-            this.picContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picContent_MouseUp);
-            this.picContent.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.picContent_PreviewKeyDown);
+            this.tsbReset.Image = global::DZSoft.IMG.Template.Properties.Resources.reset;
+            this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReset.Name = "tsbReset";
+            this.tsbReset.Size = new System.Drawing.Size(52, 22);
+            this.tsbReset.Text = "重置";
+            this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
+            // 
+            // tsbFull
+            // 
+            this.tsbFull.Image = global::DZSoft.IMG.Template.Properties.Resources.full;
+            this.tsbFull.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFull.Name = "tsbFull";
+            this.tsbFull.Size = new System.Drawing.Size(64, 22);
+            this.tsbFull.Text = "自适应";
+            this.tsbFull.Click += new System.EventHandler(this.tsbFull_Click);
             // 
             // FrmMain
             // 
@@ -2287,6 +2324,7 @@
             this.menuStrip1.PerformLayout();
             this.dzPanel1.ResumeLayout(false);
             this.dzPanel1.PerformLayout();
+            this.pnlContent.ResumeLayout(false);
             this.tsMenu.ResumeLayout(false);
             this.tsMenu.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -2430,9 +2468,12 @@
         private System.Windows.Forms.Button btnEditUnCheck;
         private System.Windows.Forms.ToolStripMenuItem 检测RToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bsmBatch;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbMove;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton tsbZoomIn;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.ToolStripButton tsbReset;
+        private System.Windows.Forms.ToolStripButton tsbFull;
     }
 }
 

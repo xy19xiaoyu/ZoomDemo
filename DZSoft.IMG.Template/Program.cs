@@ -15,9 +15,6 @@ namespace DZSoft.IMG.Template
         [STAThread]
         static void Main()
         {
-            //VisionChecker.vision_test_interface(1);
-            VisionChecker visionChecker = new VisionChecker(1024, 768);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());

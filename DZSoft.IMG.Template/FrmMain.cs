@@ -50,19 +50,7 @@ namespace DZSoft.IMG.Template
 
         private void tsmOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "*.jpg|*.jpg|*.bmp|*.bmp";
-            ofd.Multiselect = false;
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                FileName = ofd.FileName;
-                BaseMap = (Bitmap)DZSOFT.Common.ImageUtil.ReadImage(FileName);
-                this.picContent.Image = BaseMap;
-                this.picContent.Width = BaseMap.Width;
-                this.picContent.Height = BaseMap.Height;
-                this.picContent.Location = new Point(0, 0);
-                this.tsMenu.Enabled = true;
-            }
+
         }
 
 
@@ -228,7 +216,7 @@ namespace DZSoft.IMG.Template
                     break;
             }
 
-
+            if (this.picContent.Image != null) this.picContent.Image.Dispose();
             this.picContent.Image = tmpMap;
         }
 
@@ -347,6 +335,11 @@ namespace DZSoft.IMG.Template
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="isZoomIn"></param>
         public void Zoom(Point point, bool isZoomIn)
         {
             int x = point.X;
@@ -404,17 +397,17 @@ namespace DZSoft.IMG.Template
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
             IsControlDown = e.Control;
+
+            if (e.Alt) { this.Cursor = Cursors.SizeAll; }
         }
 
         private void picContent_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             IsControlDown = e.Control;
+            if (e.Alt) { this.Cursor = Cursors.SizeAll; }
         }
 
-        private void FrmMain_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //  IsControlDown = e.KeyChar  == ;
-        }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -963,6 +956,7 @@ namespace DZSoft.IMG.Template
         private void FrmMain_KeyUp(object sender, KeyEventArgs e)
         {
             IsControlDown = e.Control;
+            if (!e.Alt) { this.Cursor = Cursors.Default; }
         }
 
         private void ClearDrawTemp()
@@ -981,6 +975,7 @@ namespace DZSoft.IMG.Template
 
 
             if (BaseMap == null) return;
+            if (midMap != null) midMap.Dispose();
             midMap = (Bitmap)BaseMap.Clone();
             using (Graphics g = Graphics.FromImage(midMap))
             {
@@ -1005,7 +1000,8 @@ namespace DZSoft.IMG.Template
                     DrawMarkRegion(g, hilight, new Pen(Brushes.Red, 3));
                 }
             }
-            this.picContent.Image = midMap;
+            if (picContent.Image != null) picContent.Image.Dispose();
+            this.picContent.Image = (Bitmap)midMap.Clone();
         }
         private void DrawMarkRegion(Graphics g, MODEL_REGION model_region, Pen pen = null)
         {
@@ -1300,8 +1296,76 @@ namespace DZSoft.IMG.Template
 
         private void tsbFull_Click(object sender, EventArgs e)
         {
-            this.picContent.Width = pnlContent.Width;
-            this.picContent.Height = pnlContent.Height;
+
+            picContent.Width = pnlContent.Width;
+            picContent.Height = pnlContent.Height;
+            PropertyInfo pInfo = picContent.GetType().GetProperty("ImageRectangle", BindingFlags.Instance |
+                 BindingFlags.NonPublic);
+            Rectangle rect = (Rectangle)pInfo.GetValue(picContent, null);
+            picContent.Width = rect.Width;
+            picContent.Height = rect.Height;
+            picContent.Location = new Point(rect.X, rect.Y);
+            return;
+            //var width = BaseMap.Width;
+            //var height = BaseMap.Height;
+
+
+            //var diffWidth = Math.Abs(BaseMap.Width - pnlContent.Width);
+            //var diffHeight = Math.Abs(BaseMap.Height - pnlContent.Height);
+
+
+            //var deff = Math.Max(diffWidth, diffHeight);
+            //// deff = (int)(deff / ZoomStep) * ZoomStep;
+
+            //if (BaseMap.Width > pnlContent.Width || BaseMap.Height > pnlContent.Height)
+            //{
+            //    picContent.Width = BaseMap.Width - deff;
+            //    picContent.Height = BaseMap.Height - deff;
+            //    PropertyInfo pInfo = picContent.GetType().GetProperty("ImageRectangle", BindingFlags.Instance |
+            //     BindingFlags.NonPublic);
+            //    Rectangle rect = (Rectangle)pInfo.GetValue(picContent, null);
+            //    //picContent.Width = rect.Width;
+            //    //picContent.Height = rect.Height;
+            //}
+            //else
+            //{
+            //    picContent.Width = BaseMap.Width + deff;
+            //    picContent.Height = BaseMap.Height + deff;
+            //    //PropertyInfo pInfo = picContent.GetType().GetProperty("ImageRectangle", BindingFlags.Instance |
+            //    // BindingFlags.NonPublic);
+            //    //Rectangle rect = (Rectangle)pInfo.GetValue(picContent, null);
+            //    //picContent.Width = rect.Width;
+            //    //picContent.Height = rect.Height;
+            //}
+
+            // this.picContent.Location = new Point(0, 0);
+        }
+
+        private void tsbOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "*.jpg|*.jpg|*.bmp|*.bmp";
+            ofd.Multiselect = false;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileName = ofd.FileName;
+                BaseMap = (Bitmap)DZSOFT.Common.ImageUtil.ReadImage(FileName);
+                this.picContent.Image = (Bitmap)BaseMap.Clone();
+                this.picContent.Width = BaseMap.Width;
+                this.picContent.Height = BaseMap.Height;
+                this.picContent.Location = new Point(0, 0);
+
+                this.tsbCircle.Enabled = true;
+                this.tsbRectangle.Enabled = true;
+                this.tsbPolygon.Enabled = true;
+                this.tsbRectangle.Enabled = true;
+                this.tsbZoomIn.Enabled = true;
+                this.tsbZoonOut.Enabled = true;
+                this.tsbMove.Enabled = true;
+                this.tsbFull.Enabled = true;
+
+            }
         }
     }
 }
+

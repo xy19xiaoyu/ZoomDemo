@@ -14,6 +14,9 @@ namespace DZSoft.IMG.Template.BLL
     public class VisionChecker : IDisposable
     {
         #region C++ DLL 调用
+        [DllImport("VisionCheckD.dll", EntryPoint = "vision_test_interface", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int vision_test_interface(int nTest);
+
         [DllImport("VisionCheckD.dll", EntryPoint = "vision_init", CallingConvention = CallingConvention.Cdecl)]
         private static extern int vision_init(ref int nHandle, int width, int height, int channel, int nIndependentImg);
 

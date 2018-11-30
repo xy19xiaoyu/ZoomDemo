@@ -44,6 +44,7 @@
             // 
             // btnGetTemp
             // 
+            this.btnGetTemp.Enabled = false;
             this.btnGetTemp.Location = new System.Drawing.Point(631, 16);
             this.btnGetTemp.Name = "btnGetTemp";
             this.btnGetTemp.Size = new System.Drawing.Size(75, 23);
@@ -54,6 +55,7 @@
             // 
             // txtTemp
             // 
+            this.txtTemp.Enabled = false;
             this.txtTemp.Location = new System.Drawing.Point(93, 17);
             this.txtTemp.Name = "txtTemp";
             this.txtTemp.Size = new System.Drawing.Size(532, 21);
@@ -62,6 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(22, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);

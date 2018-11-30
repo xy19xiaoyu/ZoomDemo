@@ -753,7 +753,7 @@ namespace DZSoft.IMG.Template
         {
             IsControlDown = e.Control;
         }
-
+        public VisionChecker VisionChecker { get; set; }
         private void btnSave_Click(object sender, EventArgs e)
         {
             TEMPLATE_INFO.sTemplateInfoProp.nWidth = BaseMap.Width;
@@ -775,9 +775,12 @@ namespace DZSoft.IMG.Template
             File.WriteAllText("TEMPLATE_INF.JSON", content);
             try
             {
-                VisionChecker vision = new VisionChecker(BaseMap.Width, BaseMap.Height);
-                vision.ModelOperate(e_ModelFLAG.FLAG_INIT, content, BaseMap);
+                VisionChecker = new VisionChecker(BaseMap.Width, BaseMap.Height);
+                VisionChecker.ModelOperate(e_ModelFLAG.FLAG_INIT, content, BaseMap);
                 MessageBox.Show("OK");
+                bsmBatch.Enabled = true;
+
+
 
             }
             catch (Exception ex)
@@ -1209,7 +1212,7 @@ namespace DZSoft.IMG.Template
 
         private void bsmBatch_Click(object sender, EventArgs e)
         {
-            FrmBatchRuncs frm = new FrmBatchRuncs();
+            FrmBatchRuncs frm = new FrmBatchRuncs(VisionChecker);
             frm.ShowDialog();
 
         }

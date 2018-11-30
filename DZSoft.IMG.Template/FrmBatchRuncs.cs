@@ -25,6 +25,11 @@ namespace DZSoft.IMG.Template
             InitializeComponent();
         }
 
+        public FrmBatchRuncs(VisionChecker visionChecker) : this()
+        {
+            VisionChecker = visionChecker;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -64,16 +69,16 @@ namespace DZSoft.IMG.Template
                     Bitmap map = (Bitmap)ImageUtil.ReadImage(file);
 
                     #region 实际
-                    //DzBitmap dzBitmap = new DzBitmap()
-                    //{
-                    //    stride = 0,
-                    //    type = 3,
-                    //    width = map.Width,
-                    //    height = map.Height,
-                    //    imgData = StructUtil.GetPtrByBitmap(map),
-                    //};
-                    //List<INSPECT_RESULT_INFO> results = VisionChecker.Check(dzBitmap);
-                    List<INSPECT_RESULT_INFO> results = new List<INSPECT_RESULT_INFO>() { new INSPECT_RESULT_INFO() { rcOrigin = new Rectangle(30, 30, 200, 200) } };
+                    DzBitmap dzBitmap = new DzBitmap()
+                    {
+                        stride = 0,
+                        type = 3,
+                        width = map.Width,
+                        height = map.Height,
+                        imgData = StructUtil.GetPtrByBitmap(map),
+                    };
+                    List<INSPECT_RESULT_INFO> results = VisionChecker.Check(dzBitmap);
+                    //List<INSPECT_RESULT_INFO> results = new List<INSPECT_RESULT_INFO>() { new INSPECT_RESULT_INFO() { rcOrigin = new Rectangle(30, 30, 200, 200) } };
                     #endregion
                     if (results.Count > 0)
                     {

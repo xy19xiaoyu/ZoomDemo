@@ -1366,6 +1366,7 @@ namespace DZSoft.IMG.Template
                 this.tsbZoonOut.Enabled = true;
                 this.tsbMove.Enabled = true;
                 this.tsbFull.Enabled = true;
+                this.tsbReset.Enabled = true;
 
             }
         }
